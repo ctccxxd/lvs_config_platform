@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Refresh" content="3; url=http://{{local_ip}}:8000"/>
+<title>LVS Return</title>
+</head>
+<h3 align="left" style="color:black;font-weight:bold;font-size:15px">{{information}}</h3>

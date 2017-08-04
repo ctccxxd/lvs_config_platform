@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<link href="static/css/city.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="static/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="static/js/city4.city.js"></script>
+<script type="text/javascript" src="static/js/city4.js"></script>
+</head>
+
+<style type="text/css">
+body {
+color:#333;
+padding:0px;
+font-size:12px;
+font-family: Arial, Helvetica, sans-serif;
+}
+.form_content{
+width:575px;
+margin:30px auto;
+padding:10px;
+}
+fieldset{
+border:1px #ebebeb solid;
+padding:15px 10px 15px 10px;
+margin:0 0 10px 0;
+}
+legend{
+color:#00000F;
+background-color:#0fcdf6;
+padding:10px 20px 10px 20px;
+font-size:15px
+}
+legend.optional{
+color:#FFFFFF;
+background-color:#50c150;
+padding:2px 5px 2px 5px;
+}
+.form_content2{
+width:575px;
+margin:20px auto;
+padding:0px;
+}
+fieldset{
+border:1px #cccfff solid;
+padding:15px 10px 15px 10px;
+margin:0 0 10px 0;
+}
+legend{
+color:#00000F;
+background-color:#0fcdf6;
+padding:10px 20px 10px 20px;
+font-size:15px
+}
+legend.optional{
+color:#FFFFFF;
+background-color:#50c150;
+padding:2px 5px 2px 5px;
+}
+.form_content1{
+color:#FFFFFF
+float:0px left;
+width:530px;
+margin:10px auto;
+padding:5px 3px -10px 3px;
+margin:5px 7px 5px 7px;
+}
+.form-row {
+clear: both;
+float:left;
+padding:5px 5px 5px 5px;
+}
+.form-row-select {
+clear: both;
+float:left;
+padding:10px 5px 5px 5px;
+}
+.field-label {
+width:150px;
+float:left;
+line-height:25px;
+}
+label {
+float:left;
+color:#666666;
+}
+label.left{
+padding:0 20px 0 5px;
+float:left;
+color:#666666;
+}
+.field-widget {
+float:left;
+}
+input.required{
+width:300px;
+height:22px;
+border: 1px solid #95E0EF;
+background-color:#f3fcfe;
+border-left-width:2px;
+padding:5px 0 0 2px;
+float:left;
+}
+input.optional{
+width:300px;
+height:22px;
+border: 1px solid #adedad;
+background-color:#f3fef3;
+border-left-width:2px;
+padding:5px 0 0 2px;
+}
+select.validate-selection{
+width:305px;
+height:28px;
+border: 1px solid #95E0EF;
+background-color:#f3fcfe;
+border-left-width:2px;
+padding:4px 2px 3px 2px;
+float:left;
+}
+textarea.required{
+width:300px;
+height:75px;
+float:left;
+border: 1px solid #95E0EF;
+background-color:#f3fcfe;
+border-left-width:2px;
+}
+textarea.optional{
+width:300px;
+height:75px;
+border: 1px solid #adedad;
+background-color:#f3fef3;
+border-left-width:2px;
+}
+
+input.submit{
+color:#FFFFFF;
+background-color:#50c150;
+padding:2px 5px 2px 5px;
+cursor:pointer;
+border:none;
+width:575px;
+}
+input.submitdel{
+color:#FFFFFF;
+background-color:#50c150;
+padding:2px 5px 2px 5px;
+cursor:pointer;
+border:none;
+width:583px;
+}
+
+input.validation-failed, textarea.validation-failed, select.validation-failed {
+border: 1px solid #FF9A7F;
+background-color:#FFF2EF;
+color : #FF3300;
+}
+input.validation-passed, textarea.validation-passed {
+border: 1px solid #00CC00;
+color : #000;
+}
+
+.validation-advice {
+width:50px;
+float:left;
+margin:0px 0 0 10px;
+padding:0px 0 0 25px;
+color:#FF9A7F;
+font-size:10px;
+}
+
+.custom-advice {
+margin: 5px 0;
+padding: 5px;
+background-color: #C8AA00;
+color : #FFF;
+font-weight: bold;
+}
+
+
+input.validation-failed, textarea.validation-failed, select.validation-failed {
+border: 1px solid #FF9A7F;
+background-color:#FFF2EF;
+color : #FF3300;
+}
+input.validation-passed, textarea.validation-passed {
+border: 1px solid #00CC00;
+color : #000;
+}
+
+.validation-advice {
+width:50px;
+float:left;
+margin:0px 0 0 10px;
+padding:0px 0 0 25px;
+background:url(images/warning.png) no-repeat left;
+color:#FF9A7F;
+font-size:10px;
+}
+
+.custom-advice {
+margin: 5px 0;
+padding: 5px;
+background-color: #C8AA00;
+color : #FFF;
+font-weight: bold;
+}
+
+</style>
+<br>
+<h1 align="center" style="color:black;font-weight:bold;font-size:30px">LVS Config Platform</h1>
+<br>
+
+<div class="form_content">                                               <!-- Add LVS-Server -->
+    <form id="test" action="/addlvs" method="get">                  
+    <fieldset>
+        <legend>①  Add LVS-Server</legend>
+     <div class="form-row"> <!-- Add LVS-Server -->
+       <div class="field-label"><label for="lvsnum">LVS Member</label>:</div>
+            <div class="field-widget"><input name="lvsnum" id="lvsnum" class="required" /></div>
+        </div>
+        
+        <div class="form-row">
+            <div class="field-label"><label for="targetIP">Target IP</label>:</div>
+            <div class="field-widget"><input name="targetIP" id="targetIP" class="required" /></div>
+        </div>
+        
+        <div class="form-row">
+            <div class="field-label"><label for="VIP">VIP</label>:</div>
+            <div class="field-widget"><input name="VIP" id="VIP" class="required" /></div>
+        </div>
+ 
+        <div class="form-row">
+            <div class="field-label"><label for="realserver">RealServers</label>:</div>
+            <div class="field-widget">
+                <select id="realserver" name="realserver" class="validate-selection">
+                    <option>Select one...</option>
+                    {% for i in realservers %}
+                    <option>{{i.realserver_pool}}</option>
+                  {%endfor%}
+                </select>
+            </div>
+        </div>
+        </fieldset>
+<input type="submit" class="submit" value="Submit" /> 
+ </form><br><br><br>
+
+
+              
+ <div class="demo">                           <!-- Del LVS-Server -->                                                              
+                 <form id="test" action="/deletelvs" method="get" name="form1">   
+       <fieldset>
+             <legend>② Delete LVS-Server</legend>
+
+		<div class="demo">                 
+		<div class="infolist">
+			<div class="liststyle">
+
+				<span id="aa">
+                              
+					<i>Select LvsMum</i>
+                                         
+					<ul>
+						<li><a href="javascript:void(0)" alt="Select LvsMum">Select LvsMum</a></li>
+					</ul>
+					<input type="hidden" name="cho_lvsnum" value="Select LvsMum">
+				</span>
+				<span id="bb">
+					<i>Select TargetIP</i>
+					<ul>
+						<li><a href="javascript:void(0)" alt="Select TargetIP">Select TargetIP</a></li>
+					</ul>
+					<input type="hidden" name="cho_targetIP" value="TargetIP">
+				</span>
+				<span id="cc">
+					<i>Select VIP</i>
+					<ul>
+						<li><a href="javascript:void(0)" alt="Select VIP">Select VIP</a></li>
+
+					</ul>
+					<input type="hidden" name="cho_VIP" value="Select VIP">
+				</span>
+				<span id="dd">
+					<i>Select RealServer</i>
+					<ul>
+						<li><a href="javascript:void(0)" alt="Select RealServer">Select RealServer</a></li>
+					</ul>
+					<input type="hidden" name="cho_realserver" value="Select RealServer">
+				</span>
+			</div>
+		</div>
+</div>
+		
+       </fieldset>	
+<input type="submit" class="submitdel" value="Submit" onclick="static_num()" />
+    </form> <br><br>
+
+<div class="form_content2">                                         <!-- Find LVS-Server -->
+<form id="test" action="/findlvs" method="get">                  
+    <fieldset>
+        <legend>③ Find LVS-Server</legend>
+        <div class="form-row">
+            <div class="field-label"><label for="lvsnum">LVS Member</label>:</div>
+            <div class="field-widget">
+                <select id="lvsnum" name="lvsnum" class="validate-selection">
+                    <option>Select one...</option>
+                    <option>all</option>
+                  {% for i in lvs_list %}
+                    <option>{{i}}</option>
+                  {%endfor%}
+                </select>
+            </div>
+        </div>
+        </fieldset>
+<input type="submit" class="submit" value="Submit" /> 
+ </form><br><br></div>
+
+
+<div class="form_content2">
+ <form id="test" action="/chglvs" method="get">       <!-- Change LVS-Server -->
+    <fieldset>
+        <legend>④ Change LVS-Info</legend>
+         <div class="form-row">
+            <div class="field-label"><label for="lvsnum">LVS Member</label>:</div>
+            <div class="field-widget">
+                <select id="lvsnum" name="lvsnum" class="validate-selection" >
+                    <option>Select one...</option>
+                     {% for i in lvs_list %}
+                    <option>{{i}}</option>
+                     {%endfor%}
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="field-label"><label for="targetIP">Target IP</label>:</div>
+            <div class="field-widget"><input name="targetIP" id="targetIP" class="required"/></div>
+        </div>
+        
+        <div class="form-row">
+            <div class="field-label"><label for="VIP">VIP</label>:</div>
+            <div class="field-widget"><input name="VIP" id="VIP" class="required validate-email"/></div>
+        </div> 
+
+ <div class=form_content1>
+
+            <fieldset>
+             <div class="form-row">
+            <legend>>>>Realserver-pool<<<</legend><br>
+                {% for i in realservers %}
+                <th><input type="checkbox" name='realserver' value={{i.realserver_pool}} />{{i.realserver_pool}}</th>   
+                {%endfor%}
+              </div>
+             </div>
+                </fieldset>
+
+<input type="submit" class="submit" value="Submit" onclick="static_num()"/> 
+ </form><br><br> </div>
+
+        
+  
+       
+
+
