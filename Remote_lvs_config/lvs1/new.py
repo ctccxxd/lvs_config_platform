@@ -75,6 +75,21 @@ def add_RS_single(VIP,RS,port_realserver,port_virtualserver):
 #lvs_config(port_realserver,port_virtualserver)                      #配置lvs
 add_RS_single(VIP[0],RIP,port_realserver,port_virtualserver)
 os.system('pkill -9 keepalived')
-os.system('keepalived')
+while True:
+    if len(os.popen('netstat -anp|grep keepalived').readlines())==0:
+        os.system('keepalived')
+        break
+    else:
+        os.system('pkill -9 keepalived')
+        time.sleep(2)
 os.system('echo 1 >/proc/sys/net/ipv4/ip_forward')
+
+while True:
+    if len(os.popen('netstat -anp|grep keepalived').readlines())>0:
+        break
+    else:
+        os.system('keepalived')
+        time.sleep(1)
+
+
 #VIP.append(str(sys.argv[2]))

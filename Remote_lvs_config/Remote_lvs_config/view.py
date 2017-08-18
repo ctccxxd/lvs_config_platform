@@ -137,7 +137,7 @@ def addlvs(request):                                                            
         res=lvsinfo.objects.get_or_create(lvsnum=arg[0],targetIP=arg[1],VIP=arg[2],realserver=request.GET['realserver'])
         js_update()
         js_update()
-        return render(request, 'return1.html',{'item':item_all,'local_ip':get_ip_address('eth0')})
+        return render(request, 'return1.html',{'item':item_all,'local_ip':get_ip_address('ens160')})
     else:
         return lvs_config(arg[1],arg[2].split(':')[0],arg[3].split(':')[0],logo,vip_port,rs_port)
          
@@ -177,15 +177,15 @@ def deletelvs(request):                                                     #del
             js_update()
             if  t==-1:
                 information='The realserver is down, and please check it!\n\nThe system is deleting it from virtual server'+' '+arg[2]+'\n...'
-                return render(request, 'not_working.html',{'information':information,'local_ip':get_ip_address('eth0')})
-            return render(request, 'return1.html',{'item':item_all,'local_ip':get_ip_address('eth0')})
+                return render(request, 'not_working.html',{'information':information,'local_ip':get_ip_address('ens160')})
+            return render(request, 'return1.html',{'item':item_all,'local_ip':get_ip_address('ens160')})
         else:
             return lvs_del_single_rs(arg[1],arg[2].split(':')[0],arg[3].split(':')[0],vip_port,rs_port)
     else:
         if  lvs_del_whole_vip(arg[1],arg[2].split(':')[0],vip_port)==True:
             lvsinfo.objects.filter(lvsnum=arg[0],targetIP=arg[1],VIP=arg[2]).delete()
             js_update()
-            return render(request, 'return1.html',{'item':item_all,'local_ip':get_ip_address('eth0')})
+            return render(request, 'return1.html',{'item':item_all,'local_ip':get_ip_address('ens160')})
         else:
             return lvs_del_whole_vip(arg[1],arg[2].split(':')[0],vip_port) 
     
@@ -240,7 +240,7 @@ def chglvs(request):                                                            
         for i in arg3_split:
             lvsinfo.objects.get_or_create(lvsnum=arg[0],targetIP=arg[1],VIP=arg[2],realserver=i)
         js_update()
-        return render(request, 'return1.html',{'item':item_all,'local_ip':get_ip_address('eth0')})
+        return render(request, 'return1.html',{'item':item_all,'local_ip':get_ip_address('ens160')})
     else:
         return lvs_chg(arg[1],arg[2].split(':')[0],arg[3],vip_port)
 

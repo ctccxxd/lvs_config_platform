@@ -9,7 +9,7 @@ from models import *
 from django.http import HttpResponse
 from django.core import *
 serverUser = 'root'
-serverPwd = '11223'
+serverPwd = 'PYTym9bh'
 
 
 def notice(func):
@@ -39,7 +39,7 @@ def ssh_close( _ssh_fd ):
 
 
 def ftpModuleFile(serverIp,localFile):
-    localpath = r'//home//xiaodong//Desktop//Remote_lvs_config/lvs1' + os.sep + localFile
+    localpath = r'//home//dengyl//ENV//lvs_config_platform//Remote_lvs_config/lvs1' + os.sep + localFile 
     remotepath = '//home' + os.sep+localFile
     t = paramiko.Transport(( serverIp ,22))
     t.connect(username = serverUser , password = serverPwd)
@@ -99,7 +99,7 @@ def lvs_del_single_rs(serverIp,VIP,realserver,vip_port,rs_port):
     except paramiko.SSHException as e:
         return HttpResponse('Please check the ssh! %s'%e)
     except BaseException as e:
-        if 'Memory allocation' in str(e):
+        if 'No such destination' in str(e):
             return -1
         else:
             return HttpResponse('Problem: %s'%e)
