@@ -43,7 +43,7 @@ def add_virtualserver(VIP,RS,port_realserver,port_virtualserver):
                f.write(i+'\t'+VIP+' '+str(port_virtualserver)+'\n')
                continue
             f.write(i)
-        f.write('virtual_server '+VIP+' '+str(port_virtualserver)+'{\n\tdelay_loop 6\n\tlb_algo rr\n\tlb_kind FNAT\n\tprotocol TCP\n\tladdr_group_name laddr_g1\n\tquorum 1\n\thysteresis 0\n\tquorum_up \"ip addr  add '+VIP+'/32 dev lo;ip addr  add 127.0.0.1/8 dev lo;\"\n\tquorum_down \"ip addr  del '+VIP+'/32 dev lo;\"\n\n')
+        f.write('virtual_server '+VIP+' '+str(port_virtualserver)+'{\n\tdelay_loop 6\n\tlb_algo lc\n\tlb_kind FNAT\n\tprotocol TCP\n\tsyn_proxy\n\tladdr_group_name laddr_g1\n\talpha\n\tquorum 1\n\thysteresis 0\n\tquorum_up \"ip addr  add '+VIP+'/32 dev lo;ip addr  add 127.0.0.1/8 dev lo;\"\n\tquorum_down \"ip addr  del '+VIP+'/32 dev lo;\"\n\n')
     simple_addRS(RS,port_realserver)
 
 def add_RS_single(VIP,RS,port_realserver,port_virtualserver):
